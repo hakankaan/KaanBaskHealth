@@ -1,0 +1,26 @@
+name: Unit and Integration Tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  vitest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Vitest unit tests
+        run: npm run test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: vitest-results
+          path: coverage/
+          retention-days: 10
