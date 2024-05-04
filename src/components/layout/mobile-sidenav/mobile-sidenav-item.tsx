@@ -1,10 +1,10 @@
 import { HomeIcon } from 'lucide-react';
 import Link from 'next/link';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 type Props = {
   name: string;
-  Icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
+  Icon: (props: React.SVGProps<SVGSVGElement>) => ReactNode;
   href: string;
 };
 

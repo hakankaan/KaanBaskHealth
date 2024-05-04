@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { test, expect } from 'vitest';
-import Home from './page';
+import Dashboard from './page';
 
-test('renders home', () => {
-  render(<Home />);
-  expect(screen.getByText('Home')).toBeDefined();
+test('renders dashboard', () => {
+  render(<Dashboard />);
+  expect(screen.getByText('Dashboard')).toBeDefined();
 });
