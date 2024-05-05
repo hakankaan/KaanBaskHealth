@@ -1,5 +1,5 @@
-'use client';
 import { TooltipProvider } from '@/components/elements';
+import { StyleProvider } from '@/modules/styles/ui';
 import React from 'react';
 
 type Props = {
@@ -7,5 +7,9 @@ type Props = {
 };
 
 export const AppProvider = ({ children }: Props) => {
-  return <TooltipProvider>{children}</TooltipProvider>;
+  return (
+    <StyleProvider>
+      <TooltipProvider>{children}</TooltipProvider>
+    </StyleProvider>
+  );
 };
