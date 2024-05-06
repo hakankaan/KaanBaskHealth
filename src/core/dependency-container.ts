@@ -22,15 +22,10 @@ export class DependencyContainer {
   public analyticsService: AnalyticsService;
 
   private constructor() {
-    if (!config.ANALYTICS_ACCESS_TOKEN)
-      throw new Error('Analytics access token is required');
-
     this.styleRepository = new StyleRepositoryImpl();
     this.styleService = new StyleServiceImpl(this.styleRepository);
     this.preferencesRepository = new PreferencesRepositoryImpl();
-    this.analyticsService = new AnalyticsServiceImpl(
-      config.ANALYTICS_ACCESS_TOKEN,
-    );
+    this.analyticsService = new AnalyticsServiceImpl();
   }
 
   public static getInstance(): DependencyContainer {

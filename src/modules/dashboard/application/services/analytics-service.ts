@@ -7,19 +7,12 @@ export interface AnalyticsService {
 }
 
 export class AnalyticsServiceImpl implements AnalyticsService {
-  constructor(private readonly analyticsAccessToken: string) {}
+  constructor() {}
 
   async getAnalytics() {
-    const response = await fetch(
-      'https://dashboard-api-dusky.vercel.app/api/get',
-      {
-        headers: {
-          Authorization: `Bearer ${this.analyticsAccessToken}`,
-          'Content-Type': 'application/json',
-        },
-        cache: 'no-cache',
-      },
-    );
+    const response = await fetch('http://localhost:3000/api/analytics', {
+      cache: 'no-cache',
+    });
 
     const analyticsResponse = (await response.json()) as AnalyticsResponseDto;
 

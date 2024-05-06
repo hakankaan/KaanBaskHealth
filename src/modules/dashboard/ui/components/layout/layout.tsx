@@ -17,6 +17,7 @@ export function Layout({}: Props) {
   const widgets = useQuery({
     queryKey: queryKeys.widgets,
     queryFn: () => getWidgetsUsecase.execute(),
+    refetchInterval: 5000,
   });
 
   console.log('widgets', widgets);
