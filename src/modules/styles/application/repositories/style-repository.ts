@@ -1,6 +1,9 @@
-import { StyleRepository } from '../domain/style-repository';
-import { Style, StyleJSON } from '../domain/style';
+import { Style, StyleJSON } from '../../domain/style';
 import { styles } from './styles';
+
+export interface StyleRepository {
+  getRandomStyle(): Style;
+}
 
 export class StyleRepositoryImpl implements StyleRepository {
   private styles: StyleJSON[] = styles;

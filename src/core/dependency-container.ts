@@ -1,17 +1,36 @@
-import { StyleRepositoryImpl } from '@/modules/styles/adapters/style-repository-impl';
-import { StyleServiceImpl } from '@/modules/styles/application/style-service-impl';
-import { StyleRepository } from '@/modules/styles/domain/style-repository';
-import { StyleService } from '@/modules/styles/domain/style-service';
+import {
+  AnalyticsService,
+  AnalyticsServiceImpl,
+  PreferencesRepository,
+  PreferencesRepositoryImpl,
+} from '@/modules/dashboard';
+import {
+  StyleRepository,
+  StyleRepositoryImpl,
+  StyleService,
+  StyleServiceImpl,
+} from '@/modules/styles';
+
+import { config } from './config';
 
 export class DependencyContainer {
   private static instance: DependencyContainer | null = null;
 
   private styleRepository: StyleRepository;
   public styleService: StyleService;
+  public preferencesRepository: PreferencesRepository;
+  public analyticsService: AnalyticsService;
 
   private constructor() {
+    if (!config.ANALYTICS_ACCESS_TOKEN)
+      throw new Error('Analytics access token is required');
+
     this.styleRepository = new StyleRepositoryImpl();
     this.styleService = new StyleServiceImpl(this.styleRepository);
+    this.preferencesRepository = new PreferencesRepositoryImpl();
+    this.analyticsService = new AnalyticsServiceImpl(
+      config.ANALYTICS_ACCESS_TOKEN,
+    );
   }
 
   public static getInstance(): DependencyContainer {

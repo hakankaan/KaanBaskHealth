@@ -1,8 +1,9 @@
 import { describe, it, expect, vi } from 'vitest';
-import { StyleServiceImpl } from './style-service-impl';
-import { StyleRepository } from '../domain/style-repository';
-import { styles } from '../adapters/styles';
-import { Style } from '../domain/style';
+import { StyleServiceImpl } from './style-service';
+
+import { styles } from '../repositories/styles';
+import { Style } from '../../domain/style';
+import { StyleRepository } from '../repositories/style-repository';
 
 const mockStyleRepository: Partial<StyleRepository> = {
   getRandomStyle: vi.fn(() => Style.fromJSON(styles[0])),

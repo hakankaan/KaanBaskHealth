@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { Style } from '../domain/style';
-import { styles } from '../adapters/styles';
+import { styles } from '../application/repositories/styles';
 import { render } from '@testing-library/react';
 import { StyleProvider } from './style-provider';
 
