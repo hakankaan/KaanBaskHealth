@@ -14,7 +14,6 @@ export const StyleProvider = ({ children }: Props) => {
 
   const css = `
     :root {
-      --gradient: ${styles.gradient};
       --background: ${styles.background};
       --foreground: ${styles.foreground};
       --card: ${styles.card};
