@@ -5,6 +5,9 @@ import './globals.css';
 import { AppProvider } from '@/providers/app-provider';
 import { MainLayout } from '@/components/layout';
 
+import 'react-grid-layout/css/styles.css';
+import 'react-resizable/css/styles.css';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {

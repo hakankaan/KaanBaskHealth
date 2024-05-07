@@ -1,2 +1,2 @@
 export * from './services/analytics-service';
-export * from './repositories/preferences-repository';
+export * from './repositories/layout-settings-repository';

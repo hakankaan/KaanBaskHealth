@@ -1,5 +1,4 @@
 export type StyleJSON = {
-  gradient: string;
   background: string;
   foreground: string;
   muted: string;
@@ -23,7 +22,6 @@ export type StyleJSON = {
 
 export class Style {
   constructor(
-    public readonly gradient: string,
     public readonly background: string,
     public readonly foreground: string,
     public readonly muted: string,
@@ -47,7 +45,6 @@ export class Style {
 
   static fromJSON(json: StyleJSON): Style {
     return new Style(
-      json.gradient,
       json.background,
       json.foreground,
       json.muted,
@@ -72,7 +69,6 @@ export class Style {
 
   toJson(): StyleJSON {
     return {
-      gradient: this.gradient,
       background: this.background,
       foreground: this.foreground,
       muted: this.muted,

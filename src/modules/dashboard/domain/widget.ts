@@ -1,24 +1,24 @@
 import { Analytics } from './analytics';
 
-import { Preferences } from './preferences';
+import { LayoutSettings } from './layout-settings';
 
 export interface WidgetJson {
   id: string;
   title: string;
   analytic: Analytics;
-  preferences?: Preferences;
+  layoutSettings: LayoutSettings;
 }
 
 export class Widget {
   constructor(
-    private id: string,
-    private title: string,
-    private analytic: Analytics,
-    private preferences?: Preferences,
+    public id: string,
+    public title: string,
+    public analytic: Analytics,
+    public layoutSettings: LayoutSettings,
   ) {}
 
   static fromJson(json: WidgetJson): Widget {
-    return new Widget(json.id, json.title, json.analytic, json.preferences);
+    return new Widget(json.id, json.title, json.analytic, json.layoutSettings);
   }
 
   toJson(): WidgetJson {
@@ -26,7 +26,7 @@ export class Widget {
       id: this.id,
       title: this.title,
       analytic: this.analytic,
-      preferences: this.preferences,
+      layoutSettings: this.layoutSettings,
     };
   }
 }

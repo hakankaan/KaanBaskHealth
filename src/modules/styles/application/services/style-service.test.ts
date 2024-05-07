@@ -16,7 +16,7 @@ describe('StyleServiceImpl', () => {
     );
     const style = service.getRandomStyle();
     expect(style).toBeDefined();
-    expect(style.gradient).toBeDefined();
+    expect(style.accentForeground).toBeDefined();
     expect(mockStyleRepository.getRandomStyle).toHaveBeenCalled();
   });
 });
