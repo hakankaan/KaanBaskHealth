@@ -12,46 +12,31 @@ export const useChangeLayoutSettings = () => {
 
   const changeLayoutSettings = useCallback(
     (layout: Layout[], widgets: Widget[], currentBreakpoint: string) => {
-      widgets.forEach((widget) => {
+      const updatedWidgets = widgets.map((widget) => {
         const newLayout = layout.find((l) => l.i === widget.id);
         if (!newLayout) {
-          return;
+          return widget;
         }
 
+        const slug = widget.id;
         const oldLayoutSettings = widget.layoutSettings;
 
         const newLayoutSettings = LayoutSettings.fromJson({
           ...oldLayoutSettings,
           [currentBreakpoint]: {
-            i: widget.id,
-            x: newLayout.x,
-            y: newLayout.y,
-            w: newLayout.w,
-            h: newLayout.h,
-            minH: newLayout.minH,
-            minW: newLayout.minW,
+            ...newLayout,
+            i: slug,
           },
         });
 
-        const slug = widget.id;
         const layoutSettings = newLayoutSettings;
         layoutSettingsRepository.saveLayoutSettings(slug, layoutSettings);
-        queryClient.setQueryData<Widget[]>(queryKeys.widgets, (data) => {
-          if (!data) {
-            return [];
-          }
-          return data.map((widget) => {
-            if (widget.id !== slug) {
-              return widget;
-            }
+        widget.layoutSettings = layoutSettings;
 
-            return Widget.fromJson({
-              ...widget,
-              layoutSettings: layoutSettings,
-            });
-          });
-        });
+        return widget;
       });
+
+      queryClient.setQueryData<Widget[]>(queryKeys.widgets, updatedWidgets);
     },
 
     [layoutSettingsRepository, queryClient],

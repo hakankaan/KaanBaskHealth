@@ -1,6 +1,7 @@
 export interface AnalyticsResponseDto {
   success: boolean;
   data: Data;
+  secrectMessage?: string;
 }
 
 interface Data {

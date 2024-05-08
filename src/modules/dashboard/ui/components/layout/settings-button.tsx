@@ -7,22 +7,19 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@/components/elements/dropdown-menu';
-import { RefreshCcw, Settings2 } from 'lucide-react';
+import { Settings2 } from 'lucide-react';
 import { useLayout } from '../../contexts/use-layout';
-import { DropdownMenuIcon } from '@radix-ui/react-icons';
+
+import { useResetLayout } from '@/modules/dashboard/use-cases/use-reset-layout';
 
 type Props = {};
 
 export function SettingsButton({}: Props) {
   const { editModeEnabled, toggleEditMode } = useLayout();
+  const { resetLayout } = useResetLayout();
 
   return (
     <DropdownMenu>
@@ -42,7 +39,7 @@ export function SettingsButton({}: Props) {
           >
             Customization Mode
           </DropdownMenuCheckboxItem>
-          <DropdownMenuItem className="cursor-pointer">
+          <DropdownMenuItem className="cursor-pointer" onClick={resetLayout}>
             <span className="ml-6 text-destructive">Reset Layout</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>

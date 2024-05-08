@@ -16,6 +16,10 @@ export class AnalyticsServiceImpl implements AnalyticsService {
 
     const analyticsResponse = (await response.json()) as AnalyticsResponseDto;
 
+    if (analyticsResponse.success === false) {
+      throw new Error(analyticsResponse.secrectMessage);
+    }
+
     return analyticsResponseToAnalytics(analyticsResponse);
   }
 }

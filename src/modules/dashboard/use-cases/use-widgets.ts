@@ -15,13 +15,9 @@ const getWidgets = async () => {
   const widgets = analytics.map((analytic) => {
     let layoutSettings = layoutSettingsStorage[analytic.slug];
     if (!layoutSettings) {
-      layoutSettings = LayoutSettings.fromJson({
-        lg: { x: 0, y: 0, w: 6, h: 12, i: analytic.slug, minH: 5, minW: 2 },
-        md: { x: 0, y: 0, w: 5, h: 10, i: analytic.slug, minH: 4, minW: 2 },
-        sm: { x: 0, y: 0, w: 3, h: 6, i: analytic.slug, minH: 3, minW: 2 },
-        xs: { x: 0, y: 0, w: 4, h: 6, i: analytic.slug, minH: 3, minW: 2 },
-        xxs: { x: 0, y: 0, w: 2, h: 8, i: analytic.slug, minH: 3, minW: 2 },
-      });
+      layoutSettings = LayoutSettings.fromJson(
+        LayoutSettings.getDefaultValues(analytic.slug),
+      );
       layoutSettingsRepository.saveLayoutSettings(
         analytic.slug,
         layoutSettings,
