@@ -6,6 +6,8 @@ on:
     branches: [ main, master ]
 jobs:
   test:
+    env:
+      NEXT_PUBLIC_APP_URL: "http://localhost:3000"
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
