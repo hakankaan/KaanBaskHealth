@@ -6,19 +6,9 @@ import { StyleProvider } from './style-provider';
 
 const mockStyle = styles[0];
 
-vi.mock('../../../core/dependency-container', () => {
-  const originalModule = vi.importActual('../../../core/dependency-container');
-  return {
-    ...originalModule,
-    DependencyContainer: {
-      getInstance: vi.fn(() => ({
-        styleService: {
-          getRandomStyle: vi.fn(() => Style.fromJSON(mockStyle)),
-        },
-      })),
-    },
-  };
-});
+vi.mock('../use-cases/use-random-style', () => ({
+  useRandomStyle: () => mockStyle,
+}));
 
 describe('StyleProvider', () => {
   it('should get and set styles', () => {

@@ -2,9 +2,8 @@
 import { createContext, useState } from 'react';
 
 type LayoutContextValue = {
-  isEditMode: boolean;
-  enableEditMode: () => void;
-  saveLayout: () => void;
+  editModeEnabled: boolean;
+  toggleEditMode: () => void;
 };
 
 export const LayoutContext = createContext<LayoutContextValue | undefined>(
@@ -16,18 +15,17 @@ type Props = {
 };
 
 export const LayoutProvider = ({ children }: Props) => {
-  const [isEditMode, setIsEditMode] = useState(false);
+  const [editModeEnabled, setEditModeEnabled] = useState(false);
 
-  const enableEditMode = () => setIsEditMode(true);
-
-  const saveLayout = () => setIsEditMode(false);
+  const toggleEditMode = () => {
+    setEditModeEnabled((prev) => !prev);
+  };
 
   return (
     <LayoutContext.Provider
       value={{
-        isEditMode,
-        enableEditMode,
-        saveLayout,
+        editModeEnabled,
+        toggleEditMode,
       }}
     >
       {children}

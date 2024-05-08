@@ -1,16 +1,11 @@
-import { DependencyContainer } from '@/core/dependency-container';
-
-const getRandomStyles = () => {
-  const container = DependencyContainer.getInstance();
-  return container.styleService.getRandomStyle();
-};
+import { useRandomStyle } from '../use-cases/use-random-style';
 
 type Props = {
   children: React.ReactNode;
 };
 
 export const StyleProvider = ({ children }: Props) => {
-  const styles = getRandomStyles();
+  const styles = useRandomStyle();
 
   const css = `
     :root {

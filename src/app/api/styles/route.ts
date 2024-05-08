@@ -1,4 +1,4 @@
-import { DependencyContainer } from '@/core/dependency-container';
+import { DependencyContainer } from '@/lib/dependency-container';
 import { styleEntityToResponse } from '@/modules/styles/application/utils/utils';
 
 export const GET = async () => {

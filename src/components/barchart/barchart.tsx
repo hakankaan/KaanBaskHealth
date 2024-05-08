@@ -1,3 +1,4 @@
+'use client';
 import { Tooltip } from '@radix-ui/react-tooltip';
 import React from 'react';
 import {
@@ -35,14 +36,14 @@ export const Barchart = ({ data }: Props) => {
           bottom: 5,
         }}
       >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
+        <CartesianGrid strokeDasharray="3 3" className="select-none" />
+        <XAxis dataKey={'name'} className={'select-none'} />
+        <YAxis className={'select-none'} />
         <Tooltip />
         <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px' }} />
-        <ReferenceLine y={0} stroke="#000" />
+        <ReferenceLine y={0} stroke="#000" className={'select-none'} />
         <Brush dataKey="name" height={30} stroke="#8884d8" />
-        <Bar dataKey="value" fill="#8884d8" />
+        <Bar dataKey="value" fill="#8884d8" className={'select-none'} />
       </BarChart>
     </ResponsiveContainer>
   );

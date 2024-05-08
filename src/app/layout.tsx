@@ -7,6 +7,7 @@ import { MainLayout } from '@/components/layout';
 
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
+import { RechartFix } from '@/components/rechart-fix';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <RechartFix />
         <AppProvider>
           <MainLayout>{children}</MainLayout>
         </AppProvider>

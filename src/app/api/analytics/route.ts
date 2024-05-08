@@ -1,4 +1,4 @@
-import { config } from '@/core/config';
+import { config } from '@/lib/config';
 import { AnalyticsResponseDto } from '@/modules/dashboard/application/dtos/analytics';
 
 export const GET = async () => {

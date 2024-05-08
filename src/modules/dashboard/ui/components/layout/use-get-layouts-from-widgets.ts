@@ -14,6 +14,8 @@ export const useGetLayoutsFromWidgets = (widgets: Widget[]) => {
         y: value.y,
         w: value.w,
         h: value.h,
+        minH: value.minH,
+        minW: value.minW,
       });
     });
   });

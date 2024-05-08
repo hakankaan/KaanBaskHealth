@@ -1,4 +1,4 @@
-import { DependencyContainer } from '@/core/dependency-container';
+import { DependencyContainer } from '@/lib/dependency-container';
 import { useQueryClient } from '@tanstack/react-query';
 import { useCallback } from 'react';
 import { LayoutSettings } from '../domain/layout-settings';
@@ -28,6 +28,8 @@ export const useChangeLayoutSettings = () => {
             y: newLayout.y,
             w: newLayout.w,
             h: newLayout.h,
+            minH: newLayout.minH,
+            minW: newLayout.minW,
           },
         });
 

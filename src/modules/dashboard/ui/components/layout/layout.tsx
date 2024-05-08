@@ -32,8 +32,9 @@ export function Layout({ widgets }: Props) {
     () => WidthProvider(Responsive),
     [],
   );
-  const { isEditMode } = useLayout();
+  const { editModeEnabled } = useLayout();
   const { changeLayoutSettings } = useChangeLayoutSettings();
+  const layouts = useGetLayoutsFromWidgets(widgets);
 
   const handleChangeLayout = useCallback(
     (layout: LayoutType[]) => {
@@ -46,13 +47,9 @@ export function Layout({ widgets }: Props) {
     [currentBreakpoint, changeLayoutSettings, widgets],
   );
 
-  const layouts = useGetLayoutsFromWidgets(widgets);
-
   if (!currentBreakpoint) {
     return null;
   }
-  console.log('🚀 ~ layouts ~ layouts:', layouts);
-  console.log('breakpoint', currentBreakpoint);
 
   return (
     <ResponsiveReactGridLayout
@@ -62,8 +59,8 @@ export function Layout({ widgets }: Props) {
       breakpoints={BREAKPOINTS}
       rowHeight={30}
       layouts={layouts}
-      isDraggable={isEditMode}
-      isResizable={isEditMode}
+      isDraggable={editModeEnabled}
+      isResizable={editModeEnabled}
       draggableHandle=".grid-item__title"
       resizeHandle={<ArrowDownRight className="text-gray-400 size-4" />}
       onLayoutChange={handleChangeLayout}

@@ -1,14 +1,10 @@
-import { BarChartData, Barchart } from '@/components/charts/barchart';
+import { Barchart } from '@/components/barchart';
 import { Analytics } from '@/modules/dashboard/domain/analytics';
 import { Chart } from '@/modules/dashboard/domain/chart';
 import React from 'react';
-
-const convertAnalyticsChartData = (data: Chart): BarChartData[] => {
-  return data.labels.map((label, index) => ({
-    name: label,
-    value: data.data[index],
-  }));
-};
+import { convertAnalyticsChartData } from './utils';
+import { Table } from '../table/table';
+import { Table as TableEntity } from '@/modules/dashboard/domain/table';
 
 type Props = {
   analytics: Analytics;
@@ -22,5 +18,5 @@ export function Content({ analytics }: Props) {
     return <Barchart data={chartData} />;
   }
 
-  return <div>Content</div>;
+  return <Table table={analytics.data as TableEntity} />;
 }

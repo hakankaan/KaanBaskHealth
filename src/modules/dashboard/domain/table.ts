@@ -3,7 +3,7 @@ export interface TableJson {
 }
 
 export class Table {
-  constructor(private data: Record<string, string | number>[]) {}
+  constructor(public data: Record<string, string | number>[]) {}
 
   static fromJson(json: TableJson): Table {
     return new Table(json.data);
