@@ -15,7 +15,6 @@ export function QueryErrorBoundary({ children }: PropsWithChildren) {
           <ErrorBoundary
             onReset={reset}
             FallbackComponent={({ error, resetErrorBoundary }) => {
-              console.log('error', error.message);
               return (
                 <Alert variant="destructive">
                   <ExclamationTriangleIcon className="h-4 w-4" />
