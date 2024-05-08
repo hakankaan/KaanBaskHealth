@@ -10,6 +10,7 @@ import { Widget as WidgetEntity } from '@/modules/dashboard/domain/widget';
 import React from 'react';
 import { useLayout } from '../../contexts/use-layout';
 import { GripVertical } from 'lucide-react';
+import { Content } from './content';
 
 type Props = {
   widget: WidgetEntity;
@@ -27,7 +28,9 @@ export const Widget = React.forwardRef<HTMLDivElement, Props>(
             <GripVertical className="h-4 w-4 cursor-move grid-item__title" />
           )}
         </CardHeader>
-        <CardContent className="h-[calc(100%-48px)] p-2">wer</CardContent>
+        <CardContent className="h-[calc(100%-48px)] p-2">
+          <Content analytics={widget.analytic} />
+        </CardContent>
         <CardFooter className="p-1 relative h-4">
           <div className="right-0 absolute bottom-0 cursor-se-resize">
             {isEditMode && children}

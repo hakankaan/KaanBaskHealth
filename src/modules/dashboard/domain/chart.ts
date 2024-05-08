@@ -5,8 +5,8 @@ export interface ChartJson {
 
 export class Chart {
   constructor(
-    private labels: string[],
-    private data: number[],
+    public labels: string[],
+    public data: number[],
   ) {}
 
   static fromJson(json: ChartJson): Chart {
