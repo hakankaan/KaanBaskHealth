@@ -22,7 +22,7 @@ export function SettingsButton({}: Props) {
   const { resetLayout } = useResetLayout();
 
   return (
-    <DropdownMenu>
+    <DropdownMenu data-test-id="settings-button">
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size={'icon'}>
           <Settings2 className="h-4 w-4" />
