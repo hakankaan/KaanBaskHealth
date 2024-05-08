@@ -30,6 +30,6 @@ describe('StyleProvider', () => {
 
     const css = style?.textContent;
 
-    expect(css).toContain(`--gradient: ${mockStyle.gradient};`);
+    expect(css).toContain(`--accent: ${mockStyle.accent};`);
   });
 });
