@@ -35,6 +35,16 @@
     * *Just some part of the project is tested with `unit` and `implementation` tests due to the time constraints*
   - The project is tested with `e2e` tests
 
+## CI / CD
+  - The project is deployed to the `Vercel` for the CI/CD
+  - The project is deployed to the `https://kaan-bask-health.vercel.app/dashboard`
+  - Whenever a new commit is pushed to the `main` branch, following actions are taken
+    * The project is tested with `unit`, `implementation` and `e2e` tests
+    * The project is built
+    * The project is deployed to the `Vercel`
+
+## Video Walkthrough
+  - The video walkthrough is available at the `https://www.loom.com/share/98253ffc59fd404bbcbb1de174339d86?sid=204bd37c-edaf-482d-a799-036230ee2d9f`
 
 ## To run locally
   - Clone the repository
