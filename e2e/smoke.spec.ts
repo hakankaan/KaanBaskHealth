@@ -4,6 +4,9 @@ import { mockAnalyticsResponse } from './fixtures/analytics';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
+  await page.route('*/**/api/analytics', async (route) => {
+    await route.fulfill({ json: mockAnalyticsResponse });
+  });
 });
 
 test.describe('Rendering Dashboard page', async () => {
@@ -32,10 +35,6 @@ test.describe('Rendering Dashboard page', async () => {
   });
 
   test('show 4 widgets with the correct data', async ({ page }) => {
-    await page.route('*/**/api/analytics', async (route) => {
-      await route.fulfill({ json: mockAnalyticsResponse });
-    });
-
     await expect(
       page.getByRole('heading', { name: 'Sales Over Time' }),
     ).toBeVisible();
