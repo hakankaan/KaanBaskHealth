@@ -6,24 +6,15 @@ import { LayoutProvider } from '../../contexts/layout-context';
 
 import { EditModeSwitch } from '../layout/edit-mode-switch';
 import { DependencyContainer } from '@/core/dependency-container';
-import { GetWidgetsUseCase } from '@/modules/dashboard/use-cases/get-widgets-use-case';
+
 import { useQuery } from '@tanstack/react-query';
 import { queryKeys } from '../../query-keys';
+import { useWidgets } from '@/modules/dashboard/use-cases/use-widgets';
 
 type Props = {};
 
 export const Page = (props: Props) => {
-  const di = DependencyContainer.getInstance();
-  const getWidgetsUsecase = new GetWidgetsUseCase(
-    di.analyticsService,
-    di.layoutSettingsRepository,
-  );
-
-  const widgetsQuery = useQuery({
-    queryKey: queryKeys.widgets,
-    queryFn: () => getWidgetsUsecase.execute(),
-    refetchInterval: 5000,
-  });
+  const widgetsQuery = useWidgets();
 
   if (widgetsQuery.isLoading) {
     return <div>Loading...</div>;
